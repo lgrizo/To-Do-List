@@ -14,3 +14,11 @@
 .cancel-button {
   display: none;
 }
+
+.error-message {
+  background: red;
+  color: white;
+  display: none;
+  width: 180px;
+  
+}
