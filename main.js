@@ -58,21 +58,47 @@ $(function() {
         },
 
         enterEditMode: function () {
-          $('.save-button').show();
-          $('.cancel-button').show();
-          $('.edit-button').hide();
-          $('.delete-button').hide();
+          var actionsCell = $(this).closest("td");
+          var taskCell = actionsCell.prev();
+
+          actionsCell.find('.save-button').show();
+          actionsCell.find('.cancel-button').show();
+          actionsCell.find('.edit-button').hide();
+          actionsCell.find('.delete-button').hide();
+
+          taskCell.removeClass('todo-task');
+          app.currentTask = taskCell.text();
+          taskCell.html('<input type="text" class="edit-input" value = "' + app.currentTask + '" />');
 
         },
 
         exitEditMode: function () {
-          $('.save-button').hide();
-          $('.cancel-button').hide();
-          $('.edit-button').show();
-          $('.delete-button').show();
+          var actionsCell = $(this).closest("td");
+          var taskCell = actionsCell.prev();
+
+          actionsCell.find('.save-button').hide();
+          actionsCell.find('.cancel-button').hide();
+          actionsCell.find('.edit-button').show();
+          actionsCell.find('.delete-button').show();
+
+          taskCell.addClass('todo-task');
+          taskCell.html(app.currentTask);
 
         },
 
+        saveTask: function() {
+          var newTask = $('.edit-input').val();
+
+          todos.forEach(function(todo) {
+            if (app.currentTask === todo.task) {
+              todo.task = newTask;
+            }
+
+          });
+          app.currentTask = newTask;
+          app.exitEditMode.call(this);
+
+        },
   };
 
 app.showTodos();
@@ -83,5 +109,5 @@ $('#create-form').on('submit', app.addTodo);
 $('table').on('click', '.todo-task', app.toggleTodo);
 $('table').on('click', '.edit-button', app.enterEditMode);
 $('table').on('click', '.cancel-button', app.exitEditMode);
-
+$('table').on('click', '.save-button', app.saveTask);
 });
