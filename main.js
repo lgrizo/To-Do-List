@@ -23,13 +23,30 @@ $(function() {
             <tr>\
                 <td class="' + taskClasses + '">' + todo.task + '</td>\
                 <td>\
-                    <button>Edit</button>\
-                    <button>Delete</button>\
+                    <button class="edit-button">Edit</button>\
+                    <button class="delete-button">Delete</button>\
+                    <button class="save-button">Save</button>\
+                    <button class="cancel-button">Cancel</button>\
                     </td>\
                   </tr>\
         ');
       });
     },
+
+        addTodo: function (event) {
+          event.preventDefault();
+          var createInput = $('#create-input');
+          var createInputValue = createInput.val();
+
+          todos.push( {
+            task: createInputValue,
+            isCompleted: false
+
+          });
+          createInput.val('')
+          app.showTodos();
+
+        },
 
         toggleTodo: function() {
           todos.forEach(function(todo) {
@@ -38,7 +55,23 @@ $(function() {
             }
           }.bind(this));
           app.showTodos();
-        }
+        },
+
+        enterEditMode: function () {
+          $('.save-button').show();
+          $('.cancel-button').show();
+          $('.edit-button').hide();
+          $('.delete-button').hide();
+
+        },
+
+        exitEditMode: function () {
+          $('.save-button').hide();
+          $('.cancel-button').hide();
+          $('.edit-button').show();
+          $('.delete-button').show();
+
+        },
 
   };
 
@@ -46,6 +79,9 @@ app.showTodos();
 
 //$('.todo-task').on('click', app.toggleTodo);
 
+$('#create-form').on('submit', app.addTodo);
 $('table').on('click', '.todo-task', app.toggleTodo);
+$('table').on('click', '.edit-button', app.enterEditMode);
+$('table').on('click', '.cancel-button', app.exitEditMode);
 
 });

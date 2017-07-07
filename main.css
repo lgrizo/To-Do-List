@@ -6,3 +6,11 @@
 .is-completed {
   color: green;
 }
+
+.save-button {
+  display: none;
+}
+
+.cancel-button {
+  display: none;
+}
