@@ -32,13 +32,20 @@ $(function() {
     },
 
         toggleTodo: function() {
-          alert('toggled!');
+          todos.forEach(function(todo) {
+            if (todo.task === $(this).text()) {
+              todo.isCompleted = !todo.isCompleted;
+            }
+          }.bind(this));
+          app.showTodos();
         }
 
   };
 
 app.showTodos();
 
-$('.todo-task').on('click', app.toggleTodo);
+//$('.todo-task').on('click', app.toggleTodo);
+
+$('table').on('click', '.todo-task', app.toggleTodo);
 
 });
