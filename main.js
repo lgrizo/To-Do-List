@@ -17,9 +17,11 @@ $(function() {
       todosListEl.html('');
 
       todos.forEach(function(todo) {
+        var taskClasses = 'todo-task' + (todo.isCompleted ? ' is-completed' : ' ');
+
         todosListEl.append('\
             <tr>\
-                <td>' + todo.task + '</td>\
+                <td class="' + taskClasses + '">' + todo.task + '</td>\
                 <td>\
                     <button>Edit</button>\
                     <button>Delete</button>\
@@ -27,10 +29,16 @@ $(function() {
                   </tr>\
         ');
       });
-    }
+    },
+
+        toggleTodo: function() {
+          alert('toggled!');
+        }
 
   };
 
 app.showTodos();
+
+$('.todo-task').on('click', app.toggleTodo);
 
 });
