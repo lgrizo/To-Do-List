@@ -141,7 +141,7 @@ $(function() {
 
   $('#create-form button').css({
     color: 'white',
-    background: 'green',
+    background: '#5dad4c',
     borderRadius: '8px'
 
   });
@@ -149,7 +149,7 @@ $(function() {
   app.showTodos();
 
   $('#create-form').on('submit', app.addTodo);
-  $('#create-input').on('keyup', app.clearError);
+  $('#create-input').on('keydown', app.clearError);
   $('table').on('click', '.todo-task', app.toggleTodo);
   $('table').on('click', '.edit-button', app.enterEditMode);
   $('table').on('click', '.cancel-button', app.exitEditMode);
