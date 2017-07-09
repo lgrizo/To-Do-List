@@ -40,11 +40,11 @@ table th {
 }
 
 .error-message {
-  background: red;
-  color: white;
+  color: red;
   display: none;
   width: 231px;
-  margin-left: 377px;
+  margin: auto;
+
 }
 
 td button {
