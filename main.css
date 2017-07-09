@@ -1,5 +1,4 @@
-body,
-button {
+body, button {
   font-family: 'Dosis', sans-serif;
 }
 
@@ -44,22 +43,19 @@ table th {
   display: none;
   width: 231px;
   margin: auto;
-
 }
 
 td button {
   border: none;
   border-radius: 10px;
-
 }
 
-button:focus {outline:0 !important;}
-
-input:focus,
-select:focus,
-textarea:focus,
 button:focus {
-    outline: none;
+  outline: 0 !important;
+}
+
+input:focus, select:focus, textarea:focus, button:focus {
+  outline: none;
 }
 
 button:active {
