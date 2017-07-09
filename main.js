@@ -142,9 +142,11 @@ $(function() {
   $('#create-form button').css({
     color: 'white',
     background: '#5dad4c',
-    borderRadius: '8px'
+    borderRadius: '10px',
+    border: 'none',
 
   });
+
 
   app.showTodos();
 

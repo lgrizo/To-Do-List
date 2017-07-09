@@ -28,7 +28,7 @@ table th {
 }
 
 .is-completed {
-  color: #58d65d;
+  color: #5dad4c;
 }
 
 .save-button {
@@ -43,7 +43,26 @@ table th {
   background: red;
   color: white;
   display: none;
-  width: 230px;
-  margin-left: 375px;
+  width: 231px;
+  margin-left: 377px;
+}
 
+td button {
+  border: none;
+  border-radius: 10px;
+
+}
+
+button:focus {outline:0 !important;}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+button:active {
+  transform: translateY(2px);
+  color: white;
 }
